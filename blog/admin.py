@@ -17,6 +17,11 @@ class PostAdmin(admin.ModelAdmin):
     """ Создаем автоматическое создания слага для постов"""
     prepopulated_fields = {'slug': ('title',)}
     form = PostAdminForm
+    save_on_top = True
+    list_display = ('id', 'title', 'slug', 'category', 'created_at', 'views')
+    list_display_links = ('id', 'title')
+    search_fields = ('title',)
+    list_filter = ('category', 'tags')
 
 
 class CategoryAdmin(admin.ModelAdmin):
